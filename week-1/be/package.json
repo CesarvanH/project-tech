@@ -1,0 +1,26 @@
+{
+  "name": "week-1",
+  "version": "1.0.0",
+  "description": "Dit is de opdracht voor week 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CesarvanH/week-1.git"
+  },
+  "author": "Cesar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CesarvanH/week-1/issues"
+  },
+  "homepage": "https://github.com/CesarvanH/week-1#readme",
+  "dependencies": {
+    "camelcase": "^6.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
