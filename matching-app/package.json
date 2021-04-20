@@ -1,21 +1,21 @@
 {
-  "name": "week-1",
+  "name": "project-tech",
   "version": "1.0.0",
-  "description": "Dit is de opdracht voor week 1",
+  "description": "de Project Tech matching app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CesarvanH/week-1.git"
+    "url": "git+https://github.com/CesarvanH/project-tech.git"
   },
   "author": "Cesar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CesarvanH/week-1/issues"
+    "url": "https://github.com/CesarvanH/project-tech/issues"
   },
-  "homepage": "https://github.com/CesarvanH/week-1#readme",
+  "homepage": "https://github.com/CesarvanH/project-tech#readme",
   "dependencies": {
     "camelcase": "^6.2.0",
     "express": "^4.17.1"
