@@ -10,6 +10,7 @@
 
 body{
     font-family: 'Roboto Condensed', sans-serif;
+    background-color: #01172F;
 }
 
 /* Fonts */
@@ -26,20 +27,34 @@ h1{
 h2{
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 48px;
-    font-weight: 300;
+    font-weight: 400;
+    color: #fff;
 }
 
 h3{
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 30px;
     font-weight: 300;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+h4{
+    font-family: 'Poppins', sans-serif;
+    font-size: 19px;
 }
 
 p{
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: 300;
+    color: #fff;
 }
 
+a{
+    text-decoration: none;
+}
+
+/* Forms */
 input{
     width: 100%;
     border: none;
@@ -47,9 +62,45 @@ input{
     padding: 10px;
 }
 
+input.ingredienten{
+    max-width: 60%;
+}
+input.hoeveelheid{
+    max-width: 39%;
+}
+label.ingredienten{
+    min-width: 60%;
+    display: inline-block;
+}
+label.hoeveelheid{
+    min-width: 39%;
+    display: inline-block;
+}
+
 input#submit{
-    background-color: #436DF6;
+    background-color: #5B92FD;
     color: #fff;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+input.submit-secondary{
+    border: #5B92FD 3px solid;
+    background-color: #C4C4C4;
+    color: #fff;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+input.submit-secondary.add{
+    width: 60px;
+    margin: 0 auto;
+    display: block;
+}
+
+input#check{
+    width: auto;
 }
 
 hr{
@@ -88,26 +139,79 @@ header section::before{
 
 main section#intro{
     margin: 100px auto 0;
-    max-width: 400px;
+    max-width: 500px;
     text-align: center;
 }
 
-main section#form{
+main section.form{
     margin: 100px auto 0;
     max-width: 600px;
     background-color: #C4C4C4;
     padding: 30px;
+    border-radius: 30px;
 }
 
-main section#form form {
+main section.form form {
     max-width: 400px;
     margin: 0 auto;
 }
 
-main section#form form h3{
+main section.form form h3{
     text-align: center;
     margin-bottom: 30px;
 }
+
+main section.content{
+    max-width: 700px;
+    margin: 30px auto 0;
+}
+
+main section.content img{
+    width: 100%;
+}
+
+/* Main Gerechten */
+
+main .content article{
+    background-color: #C4C4C4;
+    display: flex;
+    padding: 20px;
+}
+
+main .content article:nth-child(even){
+    background-color: #E3E3E3;
+}
+
+main .content article p{
+    color: #000;
+}
+
+main .content article .items{
+    width: 60%;
+    padding-right: 20px;
+}
+
+main .content article .image{
+    width: 40%;
+}
+
+main .content article .ingredienten{
+    display: flex;
+    margin-top: 20px;
+}
+
+main .content article .ingredienten .half{
+    width: 50%;
+}
+
+main .content article .ingredienten .half ol{
+    padding-left: 30px;
+}
+
+/* main .content article .items .half{
+    max-width: 50%;
+    display: inline-block;
+} */
 
 /* Footer */
 
