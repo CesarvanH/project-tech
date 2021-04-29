@@ -29,6 +29,14 @@ app.get('/', function(req, res){
     });
 });
 
+app.get('/register', function(req, res){
+    res.render('register',{
+        content: 'Registreer maar',
+        published: true,
+        people: people
+    });
+});
+
 app.listen(app.get('port'), function(){
     console.log('Server started on port'+app.get('port'));
 });
