@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const app = express()
+const port = 3000
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-module.exports = router;
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
