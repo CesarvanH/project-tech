@@ -1,3 +1,6 @@
 [submodule "project-tech.wiki"]
 	path = project-tech.wiki
 	url = https://github.com/CesarvanH/project-tech.wiki.git
+[submodule "pt-course-20-21.wiki"]
+	path = pt-course-20-21.wiki
+	url = https://github.com/cmda-bt/pt-course-20-21.wiki.git
