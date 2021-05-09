@@ -1,9 +1,28 @@
-<h1>This is the register page</h1>
-{{#if published}}
-    {{content}}
-{{/if}}
-<ul>
-{{#each people}}
-    <li>{{this.firstName}} {{this.lastName}}</li>
-{{/each}}
-</ul>
+<main>
+    <section id="intro">
+        <h2>Maak een account</h2>
+        <p>Zorg er voor dat je alle belangrijke gegevens doorgeeft zodat je de perfecte recepten voor jou kan zien!</p>
+    </section>
+    <section class="form">
+        <form action=/ method=post>
+            <h3>Inlog gegevens</h3>
+            <label>Gebruikersnaam:</label><br>
+            <input type="text" name=naam><br>
+            {{!-- <label>Email:</label><br>
+            <input type="text" name="mail" required><br>
+            <label for="pass">Wachtwoord:</label><br>
+            <input type="password" id="pass" name="password" required><br>
+            <label for="pass">Herhaal wachtwoord:</label><br>
+            <input type="password" id="pass" name="password" required><br>
+            <hr>
+            <h3>Persoonlijke gegevens</h3>
+            <label>Standaard supermarkt(en):</label><br>
+            <input type="text" name="s-markten" required><br>
+            <label>Allergie(en):</label><br>
+            <input type="text" name="allergie"  required><br>
+            <label>Ongewenste ingredient(en):</label><br>
+            <input type="text" name="o-ingredient"required><br> --}}
+            <input id="submit" type="submit" value="Maak account">
+            </form> 
+    </section>
+</main>
