@@ -1,0 +1,9 @@
+{
+    "editor.fontSize": 13,
+    "workbench.colorTheme": "Tomorrow Night Blue",
+    "workbench.preferredDarkColorTheme": "Tomorrow Night Blue",
+    "workbench.colorCustomizations": {
+            "terminal.foreground" : "#00FD61",
+            "terminal.background" : "#383737"
+    }
+}
