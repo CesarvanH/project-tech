@@ -55,6 +55,7 @@ function form(req, res) {
 
 function add(req, res) {
     var id = slug(req.body.naam).toLowerCase()
+    console.log(req.body)
     
     data.push({
         id: id,
