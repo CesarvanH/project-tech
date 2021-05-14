@@ -1,14 +1,18 @@
 const express = require('express')
 const exphbs  = require('express-handlebars');
 const mongoose = require('mongoose');
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 const slug = require('slug')
 
-var path = require('path');
+const path = require('path');
 
 const app = express()
 
+//
+let data = []
+
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.urlencoded({ extended: false }))
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static('static'));
@@ -49,18 +53,12 @@ app.listen(app.get('port'), function(){
 
 app.post('/',add)
 
-function form(req, res) {
-    res.render('register.handlebars')
+function loginform(req, res) {
+    res.render('login.handlebars')
 }
 
 function add(req, res) {
-    var id = slug(req.body.naam).toLowerCase()
-    console.log(req.body)
-    
-    data.push({
-        id: id,
-        naam: req.body.naam
-    })
-
-    res.redirect('/' + id)
+    res.render('home', {naam: req.body.naam})
 }
+
+
