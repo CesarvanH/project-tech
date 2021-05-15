@@ -1,22 +1,21 @@
+// Packages vars
 const express = require('express')
+const app = express()
 const exphbs  = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const slug = require('slug')
-
 const path = require('path');
 
-const app = express()
 
-//
-let data = []
-
+//Setting up express and handlebars 
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: false }))
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static('static'));
 
+//Setting up the port and pages
 app.set('port', (process.env.PORT || 3000));
 
 app.get('/', function(req, res){
@@ -53,7 +52,9 @@ app.listen(app.get('port'), function(){
 
 app.post('/',add)
 
-function loginform(req, res) {
+
+//Login Form functies
+function loginForm(req, res) {
     res.render('login.handlebars')
 }
 
