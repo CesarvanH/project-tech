@@ -2,17 +2,20 @@
 require('./db/mongoose');
 
 // Packages vars
-const express = require('express')
-const app = express()
+const express = require('express');
 const exphbs  = require('express-handlebars');
-const bodyParser = require('body-parser')
-const slug = require('slug')
+const bodyParser = require('body-parser');
+const slug = require('slug');
 const path = require('path');
+const app = express();
+
+// Schemas
+const Recepe = require('./models/recepes')
 
 
 //Setting up express and handlebars 
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static('static'));
@@ -64,4 +67,13 @@ function add(req, res) {
     res.render('home', {naam: req.body.naam})
 }
 
+app.use(express.json());
 
+app.post('/recepes', (req, res) => {
+    const recepe = new Recepe(req.body);
+    recepe.save().then((recepe) =>  {
+        res.status(201).send(recepe);
+    }).catch((error) => {
+        res.status(400).send(error);
+    })
+})
