@@ -1,8 +1,10 @@
+//External files
+require('./db/mongoose');
+
 // Packages vars
 const express = require('express')
 const app = express()
 const exphbs  = require('express-handlebars');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const slug = require('slug')
 const path = require('path');
