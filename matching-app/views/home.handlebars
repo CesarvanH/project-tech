@@ -1,21 +1,66 @@
+<script src="js/search.js"></script>
 <main>
     <section id="intro">
         <h2>Welkom terug!</h2>
         <h3>{{naam}}</h3>
         <p>Wat zit er vandaag in uw koelkast?</p>
     </section>
-    <section class="content">
-        <img src="images/Empty-Fridge.png" alt="">
+    <section class="form">
+        <form id="searchRecepes">
+            <label>Search recepes</label>
+            <input id="search" type="text" placeholder="Search recepes...">
+        </form> 
+    </section>
+    <section id="content">
+        <article>
+            <section class="item">
+                <h4>Gegrilde peer met citroenyoghurt</h4>
+                <p>Een lekker peren gerecht voor op de barbeque. Ideaal voor als er bezoek komt!.</p>
+                <button class="delete">Delete</button>
+            </section>
+            <section class="image">
+                <img src="images/dish-1.png" alt="">
+            </section>  
+        </article>
+        <article>
+            <section class="item">
+                <h4>Nog een Peer</h4>
+                <p>Een lekker peren gerecht voor op de barbeque. Ideaal voor als er bezoek komt!.</p>
+                <button class="delete">Delete</button>
+            </section>
+            <section class="image">
+                <img src="images/dish-1.png" alt="">
+            </section>  
+        </article>
+        <article>
+            <section class="item">
+                <h4>Perzik</h4>
+                <p>Een lekker peren gerecht voor op de barbeque. Ideaal voor als er bezoek komt!.</p>
+                <button class="delete">Delete</button>
+            </section>
+            <section class="image">
+                <img src="images/dish-1.png" alt="">
+            </section>  
+        </article>
+        <article>
+            <section class="item">
+                <h4>Aardbei</h4>
+                <p>Een lekker peren gerecht voor op de barbeque. Ideaal voor als er bezoek komt!.</p>
+                <button class="delete">Delete</button>
+            </section>
+            <section class="image">
+                <img src="images/dish-1.png" alt="">
+            </section>  
+        </article>
     </section>
     <section class="form">
-        <form action="/results">
-            <label class="ingredienten">Ingredients:</label>
-            <label class="hoeveelheid">Hoeveelheid:</label>
-            <input class="ingredienten" type="text" id="ingredienten" required>
-            <input class="hoeveelheid" type="text" id="hoeveelheid" required>
-            <input type="checkbox" id="check" name="extra-s-market" unchecked>
-            <label for="extra-s-market">Ik wil nog naar de supermarkt voor extra ingredienten</label>
-            <input class="submit-secondary add" type="submit" value="+">
-            </form> 
+        <form id="addRecepe">
+            <input type="checkbox" id="hide">
+            <label>Hide all recepes</label></br></br>
+            <label>Add recepe</label>
+            <input name="naam" type="text" placeholder="Name">
+            <input name="desc" type="text" placeholder="Description">
+            <button>Add</button>
+        </form> 
     </section>
 </main>
