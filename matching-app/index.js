@@ -10,7 +10,7 @@ const path = require('path');
 const app = express();
 
 // Schemas
-const Recepe = require('./models/recepes')
+const Recipe = require('./models/recipes')
 
 
 //Setting up express and handlebars 
@@ -61,10 +61,10 @@ function addName(req, res) {
 
 app.use(express.json());
 
-app.post('/recepes', (req, res) => {
-    const recepe = new Recepe(req.body);
-    recepe.save().then((recepe) =>  {
-        res.status(201).send(recepe);
+app.post('/recipes', (req, res) => {
+    const recipe = new Recipe(req.body);
+    recipe.save().then((recipe) =>  {
+        res.status(201).send(recipe);
     }).catch((error) => {
         res.status(400).send(error);
     })

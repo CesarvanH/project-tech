@@ -1,19 +1,19 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-    const recepeList = document.querySelector('#content');
+    const recipeList = document.querySelector('#content');
 
 
-    //Delete recepes
-    recepeList.addEventListener('click', function(e){
+    //Delete recipes
+    recipeList.addEventListener('click', function(e){
         if(e.target.className == "delete"){
-            const recepe = e.target.parentElement;
-            recepe.parentNode.remove(recepe);
+            const recipe = e.target.parentElement;
+            recipe.parentNode.remove(recipe);
         }
     });
 
-    //Add recepes
+    //Add recipes
 
-    const addForm = document.forms['addRecepe'];
+    const addForm = document.forms['addRecipe'];
 
     addForm.addEventListener('submit', function(e){
         e.preventDefault()
@@ -22,18 +22,18 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
         //Create elements
-        const recepe = document.createElement('article');
+        const recipe = document.createElement('article');
         const itemHolder = document.createElement('section');
-        const recepeName = document.createElement('h4');
-        const recepeDesc = document.createElement('p');
+        const recipeName = document.createElement('h4');
+        const recipeDesc = document.createElement('p');
         const deleteBtn = document.createElement('button');
         const imageHolder = document.createElement('section');
         const image = document.createElement('img');
 
         //Add content
         deleteBtn.textContent = 'Delete';
-        recepeName.textContent = valueName;
-        recepeDesc.textContent = valueDesc;
+        recipeName.textContent = valueName;
+        recipeDesc.textContent = valueDesc;
         image.setAttribute('src', 'images/dish-1.png');
 
         //add classes
@@ -42,40 +42,40 @@ document.addEventListener('DOMContentLoaded', function(){
         deleteBtn.classList.add('delete');
 
         //Append to DOM
-        itemHolder.appendChild(recepeName);
-        itemHolder.appendChild(recepeDesc);
+        itemHolder.appendChild(recipeName);
+        itemHolder.appendChild(recipeDesc);
         itemHolder.appendChild(deleteBtn);
-        recepe.appendChild(itemHolder);
+        recipe.appendChild(itemHolder);
         imageHolder.appendChild(image);
-        recepe.appendChild(imageHolder);
+        recipe.appendChild(imageHolder);
 
-        recepeList.appendChild(recepe);
+        recipeList.appendChild(recipe);
     });
 
-    //hide recepes
+    //hide recipes
 
     const hideBox = document.querySelector('#hide');
 
     hideBox.addEventListener('change', function(e){
         if(hideBox.checked){
-            recepeList.style.display = "none";
+            recipeList.style.display = "none";
         } else {
-            recepeList.style.display  = "block";
+            recipeList.style.display  = "block";
         }
     });
 
-    //filter recepes
+    //filter recipes
 
-    const searchBar = document.forms['searchRecepes'].querySelector('input');
+    const searchBar = document.forms['searchRecipes'].querySelector('input');
     searchBar.addEventListener('keyup', function(e){
         const term = e.target.value.toLowerCase();
-        const recepes = recepeList.getElementsByClassName('item');
-        Array.from(recepes).forEach(function(recepe){
-            const title = recepe.firstElementChild.textContent;
+        const recipes = recipeList.getElementsByClassName('item');
+        Array.from(recipes).forEach(function(recipe){
+            const title = recipe.firstElementChild.textContent;
             if(title.toLowerCase().indexOf(term) !=-1){
-                recepe.parentNode.style.display = 'flex';
+                recipe.parentNode.style.display = 'flex';
             } else {
-                recepe.parentNode.style.display = 'none';
+                recipe.parentNode.style.display = 'none';
             }
         })
     })
