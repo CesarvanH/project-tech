@@ -235,9 +235,9 @@ main #content article button  {
 main #content article button:hover {
     cursor: pointer;
 }
-main #content article button:active {
+/* main #content article button:active {
     display: none;
-}
+} */
 
 /* main .content article .items .half{
     max-width: 50%;
