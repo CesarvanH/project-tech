@@ -8,6 +8,28 @@ const bodyParser = require('body-parser');
 const slug = require('slug');
 const path = require('path');
 const app = express();
+const dotenv = require('dotenv').config();
+
+
+// Recepes
+const recipeArray = [
+    {
+        name: "Gegrilde peer met citroenyoghurt", 
+        desc: "Een lekker peren gerecht voor op de barbeque. Ideaal voor als er bezoek komt!"
+    },
+    {
+        name: "Nachos met guacamole", 
+        desc: "Nacho's ontstonden doordat een Mexicaanse chef overgebleven tortilla's in driehoekjes sneed."
+    },
+    {
+        name: "Burrito's", 
+        desc: "Een burrito is een gevulde, opgerolde bloemtortilla."
+    },
+    {
+        name: "Gegrilde mais", 
+        desc: "Een gegrilde maiskolf, 'elote', is een bekend Mexicaans streetfoodgerecht."
+    }
+]
 
 // Schemas
 const Recipe = require('./models/recipes')
@@ -22,10 +44,20 @@ app.use(express.static('static'));
 
 //Setting up the port and pages
 app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'), function(){
+    console.log('Server started on port'+app.get('port'));
+});
 
 app.get('/', function(req, res){
     res.render('login',{
         published: true,
+    });
+});
+
+app.get('/home', function(req, res){
+    res.render('home',{
+        published: true,
+        recepten: recipeArray
     });
 });
 
@@ -41,24 +73,15 @@ app.get('/results', function(req, res){
     });
 });
 
-app.listen(app.get('port'), function(){
-    console.log('Server started on port'+app.get('port'));
+app.use(function(req,res){
+    res.status(404);
+    res.render('404');
 });
 
-app.post('/',addName)
+//Search 
 
 
-//Login Form functies
-function loginForm(req, res) {
-    res.render('login.handlebars')
-}
-
-function addName(req, res) {
-    res.render('home', {naam: req.body.naam})
-    setImmediate(() => {
-      });
-}
-
+//db new recipe insertion
 app.use(express.json());
 
 app.post('/recipes', (req, res) => {

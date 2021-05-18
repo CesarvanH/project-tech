@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function(){
     //filter recipes
 
     const searchBar = document.forms['searchRecipes'].querySelector('input');
-    searchBar.addEventListener('keyup', function(e){
+    searchBar.addEventListener('keydown', function(e){
         const term = e.target.value.toLowerCase();
         const recipes = recipeList.getElementsByClassName('item');
         Array.from(recipes).forEach(function(recipe){

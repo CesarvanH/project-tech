@@ -1,57 +1,35 @@
 <script src="js/search.js"></script>
 <main>
+
+    <ul>
+        <li></li>
+    </ul>
+    
+
     <section id="intro">
         <h2>Welkom terug!</h2>
         <h3>{{naam}}</h3>
         <p>Wat zit er vandaag in uw koelkast?</p>
     </section>
-    <section class="form">
+    <section class="form" onsubmit="event.preventDefault();">
         <form id="searchRecipes">
             <label>Search recipes</label>
-            <input id="search" type="text" placeholder="Search recipes...">
+            <input id="search" type="text" placeholder="Search recipes..." name="search">
         </form> 
     </section>
     <section id="content">
-        <article>
-            <section class="item">
-                <h4>Gegrilde peer met citroenyoghurt</h4>
-                <p>Een lekker peren gerecht voor op de barbeque. Ideaal voor als er bezoek komt!.</p>
-                <button class="delete">Delete</button>
-            </section>
-            <section class="image">
-                <img src="images/dish-1.png" alt="">
-            </section>  
-        </article>
-        <article>
-            <section class="item">
-                <h4>Nog een Peer</h4>
-                <p>Een lekker peren gerecht voor op de barbeque. Ideaal voor als er bezoek komt!.</p>
-                <button class="delete">Delete</button>
-            </section>
-            <section class="image">
-                <img src="images/dish-1.png" alt="">
-            </section>  
-        </article>
-        <article>
-            <section class="item">
-                <h4>Perzik</h4>
-                <p>Een lekker peren gerecht voor op de barbeque. Ideaal voor als er bezoek komt!.</p>
-                <button class="delete">Delete</button>
-            </section>
-            <section class="image">
-                <img src="images/dish-1.png" alt="">
-            </section>  
-        </article>
-        <article>
-            <section class="item">
-                <h4>Aardbei</h4>
-                <p>Een lekker peren gerecht voor op de barbeque. Ideaal voor als er bezoek komt!.</p>
-                <button class="delete">Delete</button>
-            </section>
-            <section class="image">
-                <img src="images/dish-1.png" alt="">
-            </section>  
-        </article>
+        {{#each recepten}}
+            <article>
+                <section class="item">
+                    <h4>{{this.name}}</h4>
+                    <p>{{this.desc}}</p>
+                    <button class="delete">Delete</button>
+                </section>
+                <section class="image">
+                    <img src="images/dish-1.png" alt="">
+                </section>  
+            </article>
+        {{/each}}
     </section>
     <section class="form">
         <form id="addRecipe">

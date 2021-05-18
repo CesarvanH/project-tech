@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/fridgeditch', 
+mongoose.connect(process.env.DB_HOST+'+srv://'+process.env.DB_USER+':'+process.env.DB_PASS+'@fridgeditch.gi8lm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+
+
 {
     useNewUrlParser: true, 
     useUnifiedTopology: true
