@@ -55,7 +55,7 @@ a{
 }
 
 /* Forms */
-input[type=text], input[type=password], input[type=submit]{
+textarea, input[type=text], input[type=password], input[type=submit]{
     width: 100%;
     border: none;
     margin: 3px auto 20px;

@@ -1,5 +1,5 @@
 //External files
-require('./db/mongoose');
+require('./mongoose');
 
 // Packages vars
 const express = require('express');
@@ -7,29 +7,13 @@ const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const slug = require('slug');
 const path = require('path');
-const app = express();
 const dotenv = require('dotenv').config();
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
-
-// Recepes
-const recipeArray = [
-    {
-        name: "Gegrilde peer met citroenyoghurt", 
-        desc: "Een lekker peren gerecht voor op de barbeque. Ideaal voor als er bezoek komt!"
-    },
-    {
-        name: "Nachos met guacamole", 
-        desc: "Nacho's ontstonden doordat een Mexicaanse chef overgebleven tortilla's in driehoekjes sneed."
-    },
-    {
-        name: "Burrito's", 
-        desc: "Een burrito is een gevulde, opgerolde bloemtortilla."
-    },
-    {
-        name: "Gegrilde mais", 
-        desc: "Een gegrilde maiskolf, 'elote', is een bekend Mexicaans streetfoodgerecht."
-    }
-]
+//Express shortcuts
+const router = express.Router();
+const app = express();
 
 // Schemas
 const Recipe = require('./models/recipes')
@@ -42,22 +26,16 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static('static'));
 
-//Setting up the port and pages
+//Setting up the port
 app.set('port', (process.env.PORT || 3000));
 app.listen(app.get('port'), function(){
     console.log('Server started on port'+app.get('port'));
 });
 
+//Setting up pages
 app.get('/', function(req, res){
     res.render('login',{
         published: true,
-    });
-});
-
-app.get('/home', function(req, res){
-    res.render('home',{
-        published: true,
-        recepten: recipeArray
     });
 });
 
@@ -73,12 +51,41 @@ app.get('/results', function(req, res){
     });
 });
 
+
+//Get Items from database
+
+app.get('/home', async function(req, res){
+    const Recipes = await Recipe.find({}, (error, Recipes) => { 
+        res.render('home', {Recipes}) 
+    }).lean()
+
+    // Recipe.create({ title: 'small' }, (error, Recipes) => {
+    //     console.log(Recipes)
+    //     console.log(error)
+    // })
+})
+
+
+//Sent data to database
+
+app.post("/addRecipe", (req, res) => {
+    // const newRecipe = new Recipe(req.body);
+    // newRecipe.save({title: req.body.recipeTitle})
+    const newRecipe = new Recipe ({
+            title: req.body.recipeTitle,
+            description: req.body.recipeDesc
+            }
+    );
+    newRecipe.save((err) => {});
+});
+
+
+
+  //Setting up 404
 app.use(function(req,res){
     res.status(404);
     res.render('404');
 });
-
-//Search 
 
 
 //db new recipe insertion
@@ -92,3 +99,5 @@ app.post('/recipes', (req, res) => {
         res.status(400).send(error);
     })
 })
+
+

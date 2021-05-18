@@ -3,54 +3,53 @@ document.addEventListener('DOMContentLoaded', function(){
     const recipeList = document.querySelector('#content');
 
 
-    //Delete recipes
-    recipeList.addEventListener('click', function(e){
-        if(e.target.className == "delete"){
-            const recipe = e.target.parentElement;
-            recipe.parentNode.remove(recipe);
-        }
-    });
+    // //Delete recipes
+    // recipeList.addEventListener('click', function(e){
+    //     if(e.target.className == "delete"){
+    //         const recipe = e.target.parentElement;
+    //         recipe.parentNode.remove(recipe);
+    //     }
+    // });
 
     //Add recipes
 
-    const addForm = document.forms['addRecipe'];
+    // const addForm = document.forms['addRecipe'];
 
-    addForm.addEventListener('submit', function(e){
-        e.preventDefault()
-        const valueName = addForm.querySelector('input[name="naam"]').value;
-        const valueDesc = addForm.querySelector('input[name="desc"]').value;
+    // addForm.addEventListener('submit', function(e){
+    //     const valueName = addForm.querySelector('input[name="recipeTitle"]').value;
+    //     const valueDesc = addForm.querySelector('input[name="recipeDesc"]').value;
 
 
-        //Create elements
-        const recipe = document.createElement('article');
-        const itemHolder = document.createElement('section');
-        const recipeName = document.createElement('h4');
-        const recipeDesc = document.createElement('p');
-        const deleteBtn = document.createElement('button');
-        const imageHolder = document.createElement('section');
-        const image = document.createElement('img');
+    //     //Create elements
+    //     const recipe = document.createElement('article');
+    //     const itemHolder = document.createElement('section');
+    //     const recipeName = document.createElement('h4');
+    //     const recipeDesc = document.createElement('p');
+    //     const deleteBtn = document.createElement('button');
+    //     const imageHolder = document.createElement('section');
+    //     const image = document.createElement('img');
 
-        //Add content
-        deleteBtn.textContent = 'Delete';
-        recipeName.textContent = valueName;
-        recipeDesc.textContent = valueDesc;
-        image.setAttribute('src', 'images/dish-1.png');
+    //     //Add content
+    //     deleteBtn.textContent = 'Delete';
+    //     recipeName.textContent = valueName;
+    //     recipeDesc.textContent = valueDesc;
+    //     image.setAttribute('src', 'images/dish-1.png');
 
-        //add classes
-        itemHolder.classList.add('item');
-        imageHolder.classList.add('image');
-        deleteBtn.classList.add('delete');
+    //     //add classes
+    //     itemHolder.classList.add('item');
+    //     imageHolder.classList.add('image');
+    //     deleteBtn.classList.add('delete');
 
-        //Append to DOM
-        itemHolder.appendChild(recipeName);
-        itemHolder.appendChild(recipeDesc);
-        itemHolder.appendChild(deleteBtn);
-        recipe.appendChild(itemHolder);
-        imageHolder.appendChild(image);
-        recipe.appendChild(imageHolder);
+    //     //Append to DOM
+    //     itemHolder.appendChild(recipeName);
+    //     itemHolder.appendChild(recipeDesc);
+    //     itemHolder.appendChild(deleteBtn);
+    //     recipe.appendChild(itemHolder);
+    //     imageHolder.appendChild(image);
+    //     recipe.appendChild(imageHolder);
 
-        recipeList.appendChild(recipe);
-    });
+    //     recipeList.appendChild(recipe);
+    // });
 
     //hide recipes
 

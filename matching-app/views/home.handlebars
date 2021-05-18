@@ -1,4 +1,3 @@
-<script src="js/search.js"></script>
 <main>
 
     <ul>
@@ -18,12 +17,11 @@
         </form> 
     </section>
     <section id="content">
-        {{#each recepten}}
+        {{#each Recipes}}
             <article>
                 <section class="item">
-                    <h4>{{this.name}}</h4>
-                    <p>{{this.desc}}</p>
-                    <button class="delete">Delete</button>
+                    <h4>{{this.title}}</h4>
+                    <p>{{this.description}}</p>
                 </section>
                 <section class="image">
                     <img src="images/dish-1.png" alt="">
@@ -32,12 +30,13 @@
         {{/each}}
     </section>
     <section class="form">
-        <form id="addRecipe">
+        <form id="addRecipe" method="post" action="/addRecipe">
             <input type="checkbox" id="hide">
             <label>Hide all recipes</label></br></br>
             <label>Add recipe</label>
-            <input name="naam" type="text" placeholder="Name">
-            <input name="desc" type="text" placeholder="Description">
+            <input name="recipeTitle" type="text" placeholder="Name">
+            <textarea name="recipeDesc" type="text" placeholder="Description"></textarea>
+            <input type="file" name="avatar" />
             <button>Add</button>
         </form> 
     </section>
