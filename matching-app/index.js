@@ -109,7 +109,7 @@ app.post("/addRecipe",uploadImg.single('image'),(req, res) => {
         ingredient3: req.body.ingredient3,
         ingredient4: req.body.ingredient4,
         ingredient5: req.body.ingredient5,
-        image:finalImg.image,
+        // image:finalImg.image,
     });
 
     
