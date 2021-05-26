@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const searchBar = document.forms['searchRecipes'].querySelector('input');
     searchBar.addEventListener('keydown', function(e){
         const term = e.target.value.toLowerCase();
-        const recipes = recipeList.getElementsByClassName('item');
+        const recipes = recipeList.getElementsByClassName('items');
         Array.from(recipes).forEach(function(recipe){
             const title = recipe.firstElementChild.textContent;
             if(title.toLowerCase().indexOf(term) !=-1){
