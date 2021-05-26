@@ -8,8 +8,8 @@ const bodyParser = require('body-parser');
 const slug = require('slug');
 const path = require('path');
 const dotenv = require('dotenv').config();
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const multer  = require('multer');
+const fs = require('fs');
 
 //Express shortcuts
 const router = express.Router();
@@ -51,6 +51,12 @@ app.get('/results', function(req, res){
     });
 });
 
+app.get('/addRecipe', function(req, res){
+    res.render('result',{
+        published: true,
+    });
+});
+
 
 //Get Items from database
 
@@ -65,20 +71,51 @@ app.get('/home', async function(req, res){
     // })
 })
 
+// Middleware bodyparser
+app.use(bodyParser.urlencoded({extended:true}))
+
+const storage = multer.diskStorage({
+    destination:function(req,file,cb){
+        cb(null,'uploads')
+    },
+    filename:function(req,file,cb){
+        cb(null,file.fieldname  + '-' + Date.now() + path.extname(file.originalname));
+    }
+})
+
+const uploadImg = multer({
+    storage:storage
+})
 
 //Sent data to database
 
-app.post("/addRecipe", (req, res) => {
-    // const newRecipe = new Recipe(req.body);
-    // newRecipe.save({title: req.body.recipeTitle})
+app.post("/addRecipe",uploadImg.single('image'),(req, res) => {
+    // //image encoder
+    // const img = fs.readFileSync(req.file.path);
+    // const encode_image = img.toString('base64');
+
+    // //JSON object
+    // const finalImg = {
+    //     contentType:req.file.mimetype,
+    //     path:req.file.path,
+    //     image:new Buffer(encode_image, 'base64')
+    // };
+
     const newRecipe = new Recipe ({
-            title: req.body.recipeTitle,
-            description: req.body.recipeDesc
-            }
-    );
+        title: req.body.recipeTitle,
+        description: req.body.recipeDesc,
+        ingredient1: req.body.ingredient1,
+        ingredient2: req.body.ingredient2,
+        ingredient3: req.body.ingredient3,
+        ingredient4: req.body.ingredient4,
+        ingredient5: req.body.ingredient5,
+        image:finalImg.image,
+    });
+
+    
+
     newRecipe.save((err) => {});
 });
-
 
 
   //Setting up 404

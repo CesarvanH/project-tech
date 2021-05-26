@@ -19,25 +19,48 @@
     <section id="content">
         {{#each Recipes}}
             <article>
-                <section class="item">
+                <section class="items">
                     <h4>{{this.title}}</h4>
                     <p>{{this.description}}</p>
+                    <section class="ingredienten">
+                        <section class="half">
+                            <p><strong>Ingredienten:</strong></p>
+                            <ol>
+                                <li>{{this.ingredient1}}</li>
+                                <li>{{this.ingredient2}}</li>
+                                <li>{{this.ingredient3}}</li>
+                            </ol> 
+                        </section>
+                        <section class="half">                     
+                            <ol>
+                                <li>{{this.ingredient4}}</li>
+                                <li>{{this.ingredient5}}</li>
+                            </ol>
+                        </section> 
+                    </section>
                 </section>
                 <section class="image">
                     <img src="images/dish-1.png" alt="">
                 </section>  
             </article>
         {{/each}}
+
     </section>
     <section class="form">
-        <form id="addRecipe" method="post" action="/addRecipe">
+        <form id="addRecipe" method="post" action="/addRecipe" enctype="multipart/form-data">
             <input type="checkbox" id="hide">
             <label>Hide all recipes</label></br></br>
             <label>Add recipe</label>
             <input name="recipeTitle" type="text" placeholder="Name">
+            <input name="ingredient1" type="text" placeholder="Ingredient">
+            <input name="ingredient2" type="text" placeholder="Ingredient">
+            <input name="ingredient3" type="text" placeholder="Ingredient">
+            <input name="ingredient4" type="text" placeholder="Ingredient">
+            <input name="ingredient5" type="text" placeholder="Ingredient">
+
             <textarea name="recipeDesc" type="text" placeholder="Description"></textarea>
-            {{!-- <input type="file" name="avatar" /> --}}
-            <button>Add</button>
+            {{!-- <input type="file" name="image" accept="image/*"/> --}}
+            <input type="submit" value="Upload Recipe">
         </form> 
     </section>
 </main>

@@ -199,7 +199,7 @@ main #content article p{
     color: #000;
 }
 
-main #content article .item{
+main #content article .items{
     width: 60%;
     padding-right: 20px;
     position: relative;
@@ -220,6 +220,10 @@ main #content article .ingredienten .half{
 
 main #content article .ingredienten .half ol{
     padding-left: 30px;
+}
+
+main #content article .ingredienten .half ol li:empty{
+    display: none;
 }
 
 main #content article button  {
