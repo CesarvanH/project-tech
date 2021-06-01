@@ -89,7 +89,7 @@ const uploadImg = multer({
 
 //Sent data to database
 
-app.post("/addRecipe",uploadImg.single('image'),(req, res) => {
+app.post("/addRecipe",uploadImg.single('image'), async (req, res) => {
     // //image encoder
     // const img = fs.readFileSync(req.file.path);
     // const encode_image = img.toString('base64');
@@ -101,20 +101,22 @@ app.post("/addRecipe",uploadImg.single('image'),(req, res) => {
     //     image:new Buffer(encode_image, 'base64')
     // };
 
-    const newRecipe = new Recipe ({
-        title: req.body.recipeTitle,
-        description: req.body.recipeDesc,
-        ingredient1: req.body.ingredient1,
-        ingredient2: req.body.ingredient2,
-        ingredient3: req.body.ingredient3,
-        ingredient4: req.body.ingredient4,
-        ingredient5: req.body.ingredient5,
-        // image:finalImg.image,
-    });
+    try {
+        const newRecipe = new Recipe ({
+            title: req.body.recipeTitle,
+            description: req.body.recipeDesc,
+            ingredient1: req.body.ingredient1,
+            ingredient2: req.body.ingredient2,
+            ingredient3: req.body.ingredient3,
+            ingredient4: req.body.ingredient4,
+            ingredient5: req.body.ingredient5,
+            // image:finalImg.image,
+        });
+        await newRecipe.save();
 
-    
-
-    newRecipe.save((err) => {});
+    } catch (error) {
+        res.send();
+    }
 });
 
 
